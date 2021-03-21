@@ -4,7 +4,7 @@ Simple application using deezer API to retrieve your playlists and play them usi
 
 ### Prerequisites
 
-Before launching app.py, you need to make few modification to the user.txt file   return
+Before launching app.py, you need to make few modification to the user.txt file  
 The user.txt file being organised like this :
 
 ```
@@ -17,8 +17,8 @@ You need to write your [deezer id](https://support.deezer.com/hc/fr/articles/115
 
 ### Using the app
 
-Launch app.py when you are ready, error messages are not an issue   return
-After having clicked on start, you will have five second to reach your chat bar on a discord channel, just click on it and wait   return
+Launch app.py when you are ready, error messages are not an issue  
+After having clicked on start, you will have five second to reach your chat bar on a discord channel, just click on it and wait  
 
 ## Built With Followings Modules
 
