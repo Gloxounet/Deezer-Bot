@@ -1,2 +1,1 @@
-# Deezer-Bot
- 
+# Quick !play for discord bot
