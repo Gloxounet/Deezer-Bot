@@ -18,7 +18,7 @@ You need to write your [deezer id](https://support.deezer.com/hc/fr/articles/115
 ### Using the app
 
 Launch app.py when you are ready, error messages are not an issue  
-After having clicked on start, you will have five second to reach your chat bar on a discord channel, just click on it and wait  
+After having clicked on start, you will have five second to reach your chat bar on a discord channel, just click on it and wait
 
 ## Built With Followings Modules
 

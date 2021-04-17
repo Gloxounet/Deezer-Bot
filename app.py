@@ -58,9 +58,15 @@ def callback_playlist_tracks(sender,data):
 def callback_start(sender,data):
     global tracks
     with window("Quick Play Discord") :
+        #Order fix
+        order      = get_value("Pick Most Recent First")
+        if order :
+            tracks.reverse()
+
         randomizer = get_value("Randomise")
         limitation = get_value("Track limit")
-        print_track_list(track_list=tracks,limitation=limitation,randomise=randomizer)
+        prefix     = get_value("Prefix")
+        print_track_list(track_list=tracks,limitation=limitation,randomise=randomizer,prefix=prefix)
 
 
 #window object settings
@@ -103,6 +109,12 @@ with window("Quick Play Discord", width=520, height=670):
 
     #inputbox
     add_input_int("Track limit", default_value=5)
+
+    #prefixbox
+    add_input_text("Prefix", default_value="/play")
+
+    #order
+    add_checkbox("Pick Most Recent First")
 
 
     add_spacing(count=12)

@@ -50,13 +50,13 @@ def get_playlists_name_list(liste) :
         new_list.append(string)
     return new_list
 
-def print_track_list(track_list,randomise,limitation) :
+def print_track_list(track_list,randomise,limitation,prefix="/play") :
     if randomise == True :
         random.shuffle(track_list)
     if 1 <= limitation <= len(track_list) :
         track_list = track_list[:limitation]
 
-    paste_list(get_str_from_list(track_list))
+    paste_list(get_str_from_list(track_list),p=prefix)
 
 ###DEEZER FUNCTIONS :##########################################################
 
