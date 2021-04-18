@@ -3,11 +3,14 @@ from dearpygui.simple import *
 
 #functions.py Imports
 from functions import get_available_user_from_txt ,get_playlists_name_list,get_playlists,get_tracks,print_track_list
+import function_spotify as s
 
 #USEFUL VARIABLES
 user_list      = []
 plateform_list = []
+plateform      = None
 playlist_list  = []
+
 
 #DISPLAY VARIABLES
 display_plateform_list = ["Deezer","Spotify (not working, will autoselect deezer)"]
@@ -24,6 +27,7 @@ def callback_plateform_users(sender,data) :
     global display_user_list
     global playlist_list
     global display_playlist_list
+    global plateform #TODO mettre les if et tout t'as capté
 
     with window("Quick Play Discord") :
         choosen_platform = get_value("Plateform")
