@@ -34,10 +34,10 @@ def get_str_from_list(liste) :
 
     return(liste)
 
-def paste_list(liste,p="!p "):
+def paste_list(liste,p="!p"):
     time.sleep(5)
     for x in liste :
-        x = p + x
+        x = p +" "+ x
         keyboard.write(x)
         time.sleep(0.1)
         keyboard.press_and_release('enter')
