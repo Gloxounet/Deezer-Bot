@@ -69,3 +69,7 @@ def get_playlists(username) :
 
 def get_tracks(playlist):
     return playlist.get_tracks(limit='1000')
+
+###SPOTIFY FUNCTIONS :##########################################################
+
+print(get_playlists_name_list(get_playlists(2278880688)))

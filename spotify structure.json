@@ -1,0 +1,24 @@
+{
+    get_track:{
+        "items":[
+            'track':{
+                "id"
+                "name"
+                "artists"
+            }
+        ]
+    }
+}
+
+
+{
+    get_playlists:{
+        "items":[
+            "id"
+            "name"
+
+
+        ]
+    }
+
+}
