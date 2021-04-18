@@ -46,7 +46,6 @@ def callback_user_playlist(sender,data):
         display_playlist_list = get_playlists_name_list(playlist_list)
         refresh()
 
-
 def callback_playlist_tracks(sender,data):
 
     with window("Quick Play Discord") :
@@ -107,15 +106,14 @@ with window("Quick Play Discord", width=520, height=670):
     #tickbox
     add_checkbox("Randomise")
 
+    #order
+    add_checkbox("Pick Most Recent First")
+
     #inputbox
     add_input_int("Track limit", default_value=5)
 
     #prefixbox
     add_input_text("Prefix", default_value="/play")
-
-    #order
-    add_checkbox("Pick Most Recent First")
-
 
     add_spacing(count=12)
     add_separator()
