@@ -7,12 +7,22 @@ import random
 client = deezer.Client()
 ###TEXT FUNCTIONS :##########################################################
 
-def get_available_user_from_txt() :
-    user_list = []
-    with open("user.txt", "r") as f :
-        for x in f :
-            user_list.append((x[:10],x[11:].replace("\n","")))
-    return(user_list)
+def get_available_user_from_txt(plateform) :
+    if plateform == "Deezer" :
+        user_list = []
+        with open("user_deezer.txt", "r") as f :
+            for x in f :
+                user_list.append((x[:10],x[11:].replace("\n","")))
+        return(user_list)
+    elif plateform == "Spotify" :
+        user_list = []
+        with open("user_spotify.txt", "r") as f :
+            for x in f :
+                l = x.split(" ")
+                user_list.append((l[0],l[1].replace("\n","")))
+        return(user_list)
+    else :
+        raise NameError("Invalid plateform")
 
 def get_artist(track):
     string = (track.get_artist()).__repr__()
@@ -50,13 +60,18 @@ def get_playlists_name_list(liste) :
         new_list.append(string)
     return new_list
 
-def print_track_list(track_list,randomise,limitation,prefix="/play") :
+def print_track_list(track_list,randomise,limitation,plateform,prefix="/play") :
     if randomise == True :
         random.shuffle(track_list)
     if 1 <= limitation <= len(track_list) :
         track_list = track_list[:limitation]
 
-    paste_list(get_str_from_list(track_list),p=prefix)
+    if plateform == "Deezer" :
+        paste_list(get_str_from_list(track_list),p=prefix)
+    elif plateform == "Spotify" :
+        paste_list(track_list,p=prefix)
+    else :
+        raise NameError('Invalid plateform')
 
 ###DEEZER FUNCTIONS :##########################################################
 
@@ -69,7 +84,3 @@ def get_playlists(username) :
 
 def get_tracks(playlist):
     return playlist.get_tracks(limit='1000')
-
-###SPOTIFY FUNCTIONS :##########################################################
-
-print(get_playlists_name_list(get_playlists(2278880688)))

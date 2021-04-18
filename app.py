@@ -8,12 +8,11 @@ import function_spotify as s
 #USEFUL VARIABLES
 user_list      = []
 plateform_list = []
-plateform      = None
 playlist_list  = []
-
+plateform_list = ["Deezer","Spotify"]
 
 #DISPLAY VARIABLES
-display_plateform_list = ["Deezer","Spotify (not working, will autoselect deezer)"]
+display_plateform_list = ["Deezer","Spotify"]
 display_user_list      = []
 display_playlist_list  = []
 tracks         = []
@@ -27,13 +26,12 @@ def callback_plateform_users(sender,data) :
     global display_user_list
     global playlist_list
     global display_playlist_list
-    global plateform #TODO mettre les if et tout t'as capté
+    global plateform_list
 
     with window("Quick Play Discord") :
-        choosen_platform = get_value("Plateform")
-        #Pas de choix encore entre deezer et spotify donc :
-        user_list = get_available_user_from_txt()
-
+        choosen_platform = plateform_list[get_value("Plateform")]
+        print(choosen_platform)
+        user_list = get_available_user_from_txt(choosen_platform)
         display_user_list = [i[1] for i in user_list]
         playlist_list = []
         display_playlist_list = []
@@ -45,21 +43,37 @@ def callback_user_playlist(sender,data):
 
     with window("Quick Play Discord") :
         choosen_user = get_value("User")
+        choosen_platform = plateform_list[get_value("Plateform")]
         user = user_list[choosen_user][0]
-        playlist_list = get_playlists(user)
-        display_playlist_list = get_playlists_name_list(playlist_list)
+        if choosen_platform == "Deezer" :
+            playlist_list = get_playlists(user)
+            display_playlist_list = get_playlists_name_list(playlist_list)
+        elif choosen_platform == "Spotify" :
+            playlist_list = s.get_playlists(user)
+            clean_playlist = s.list_playlists(playlist_list)
+            display_playlist_list = [i[1] for i in clean_playlist]
+        else :
+            raise NameError('Invalid plateform')
         refresh()
 
 def callback_playlist_tracks(sender,data):
+    global tracks
 
     with window("Quick Play Discord") :
-        global tracks
+        choosen_platform = plateform_list[get_value("Plateform")]
         choosen_playlist = get_value("Playlist")
-        tracks = get_tracks(playlist_list[choosen_playlist])
+        if choosen_platform == "Deezer" :
+            tracks = get_tracks(playlist_list[choosen_playlist])
+        elif choosen_platform == "Spotify" :
+            tracks = s.get_tracks((s.list_playlists(playlist_list))[choosen_playlist][0])
+        else :
+            raise NameError('Invalid plateform')
+
         refresh()
 
 def callback_start(sender,data):
     global tracks
+    choosen_platform = plateform_list[get_value("Plateform")]
     with window("Quick Play Discord") :
         #Order fix
         order      = get_value("Pick Most Recent First")
@@ -69,7 +83,8 @@ def callback_start(sender,data):
         randomizer = get_value("Randomise")
         limitation = get_value("Track limit")
         prefix     = get_value("Prefix")
-        print_track_list(track_list=tracks,limitation=limitation,randomise=randomizer,prefix=prefix)
+        
+        print_track_list(track_list=tracks,limitation=limitation,randomise=randomizer,prefix=prefix,plateform=choosen_platform)
 
 
 #window object settings
