@@ -4,3 +4,6 @@ app.ico
 logo
 __pycache__
 apikey.py
+build
+dist
+.cache

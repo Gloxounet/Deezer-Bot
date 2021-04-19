@@ -133,7 +133,7 @@ with window("Quick Play Discord", width=520, height=670):
     add_input_int("Track limit", default_value=5)
 
     #inputtimefreeze
-    add_input_float("Wait time", default_value=0.9)
+    add_input_float("Wait time", default_value=0.5)
 
     #prefixbox
     add_input_text("Prefix", default_value="/play")
