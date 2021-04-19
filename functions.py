@@ -44,14 +44,14 @@ def get_str_from_list(liste) :
 
     return(liste)
 
-def paste_list(liste,p="!p"):
+def paste_list(liste,p="!p",t=1):
     time.sleep(5)
     for x in liste :
         x = p +" "+ x
         keyboard.write(x)
         time.sleep(0.1)
         keyboard.press_and_release('enter')
-        time.sleep(1)
+        time.sleep(t)
 
 def get_playlists_name_list(liste) :
     new_list = []
@@ -60,16 +60,16 @@ def get_playlists_name_list(liste) :
         new_list.append(string)
     return new_list
 
-def print_track_list(track_list,randomise,limitation,plateform,prefix="/play") :
+def print_track_list(track_list,randomise,limitation,plateform,t,prefix="/play") :
     if randomise == True :
         random.shuffle(track_list)
     if 1 <= limitation <= len(track_list) :
         track_list = track_list[:limitation]
 
     if plateform == "Deezer" :
-        paste_list(get_str_from_list(track_list),p=prefix)
+        paste_list(get_str_from_list(track_list),t=t,p=prefix)
     elif plateform == "Spotify" :
-        paste_list(track_list,p=prefix)
+        paste_list(track_list,t=t,p=prefix)
     else :
         raise NameError('Invalid plateform')
 

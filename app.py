@@ -80,11 +80,12 @@ def callback_start(sender,data):
         if order :
             tracks.reverse()
 
+        wait_time  = get_value("Wait time")
         randomizer = get_value("Randomise")
         limitation = get_value("Track limit")
         prefix     = get_value("Prefix")
         
-        print_track_list(track_list=tracks,limitation=limitation,randomise=randomizer,prefix=prefix,plateform=choosen_platform)
+        print_track_list(track_list=tracks,limitation=limitation,randomise=randomizer,prefix=prefix,plateform=choosen_platform,t=wait_time)
 
 
 #window object settings
@@ -130,6 +131,9 @@ with window("Quick Play Discord", width=520, height=670):
 
     #inputbox
     add_input_int("Track limit", default_value=5)
+
+    #inputtimefreeze
+    add_input_float("Wait time", default_value=0.9)
 
     #prefixbox
     add_input_text("Prefix", default_value="/play")
