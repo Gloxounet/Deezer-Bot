@@ -1,8 +1,9 @@
 import spotipy
+import apikey as *
 from spotipy.oauth2 import SpotifyClientCredentials
 
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='96b40f6e2f66470a81bb9f2eeb93e233',
-                                                           client_secret='24d7f1fe71f441c0952e8b9a6badae69'))
+sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id,
+                                                           client_secret=client_secret))
 
 def get_playlists(username) :
     playlists = sp.user_playlists(username,limit=50)

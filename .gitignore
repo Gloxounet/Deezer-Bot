@@ -3,3 +3,4 @@ app.ico
 .vscode
 logo
 __pycache__
+apikey.py
